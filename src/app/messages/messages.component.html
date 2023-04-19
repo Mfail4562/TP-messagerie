@@ -1,0 +1,11 @@
+<div *ngIf="listeMessages && listeMessages.length>0">
+  <div *ngFor="let message of listeMessages">
+    <p>
+      {{message.people.pseudo}} a écrit le {{message.date | date:'dd/MM/YYYY'}}
+                                à {{message.date | date:'HH:mm'}}</p>
+    <textarea [value]="message.message" class="w-100 form-control" disabled></textarea>
+  </div>
+</div>
+<div *ngIf="!listeMessages || listeMessages.length == 0" class="h-100">
+  <p class="fs-1 text-decoration-underline">Il n'y actuellement aucun message</p>
+</div>

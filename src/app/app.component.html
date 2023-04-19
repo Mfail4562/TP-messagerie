@@ -1,1 +1,20 @@
-<!-- Fichier de base TP-Messagerie -->
+<div class="container text-center h-75 mt-3">
+  <div class="row mh-100">
+    <div class="col-12 border">
+      <app-header [ApplicationName]="title"></app-header>
+    </div>
+    <div class="col-4 border mh-75">
+      <app-active-people></app-active-people>
+    </div>
+    <div class="col-8 mh-75">
+      <div class="row mh-100">
+        <div class="col-12 border overflow-auto" style="height: 300px;">
+          <app-messages></app-messages>
+        </div>
+        <div class="col-12 border">
+          <app-new-message></app-new-message>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

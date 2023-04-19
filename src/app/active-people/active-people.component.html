@@ -1,0 +1,6 @@
+<h3 class="fs-1 text-decoration-underline">Personne actives :</h3>
+<br/>
+<ul *ngIf="activePeople && activePeople.length>0">
+  <li *ngFor="let people of activePeople" class="fs-4">{{people.pseudo}}</li>
+</ul>
+<p *ngIf="!activePeople || activePeople.length == 0" class="fs-4">Il n'y a pour le moment aucune personne active...</p>
