@@ -10,10 +10,4 @@ export class Message {
     this.message = message;
     this.people = people;
   }
-
-  public static createMessage(people: People, message: string, date: Date): Message {
-    const newMessage: Message = new Message(people, message);
-    newMessage.date = date;
-    return newMessage;
-  }
 }
