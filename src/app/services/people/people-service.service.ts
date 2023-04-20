@@ -13,7 +13,7 @@ export class PeopleService {
 
   public addPeople(people: People): boolean {
     if (people && people.pseudo !== '') {
-      if (!this.peoples.includes(people)) {
+      if (this.dontHave(people)) {
         this.peoples.push(people);
         this.notification();
         return true;
@@ -27,5 +27,15 @@ export class PeopleService {
 
   private notification() {
     this.peoplesEmitter.emit(this.peoples.slice());
+  }
+
+  private dontHave(people: People) {
+    let havent: boolean = true;
+    this.peoples.forEach(function (p) {
+      if (p.pseudo === people.pseudo) {
+        havent = false;
+      }
+    });
+    return havent;
   }
 }

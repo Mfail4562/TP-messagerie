@@ -12,7 +12,6 @@ export class MessageService {
   }
 
   public addMessage(message: Message): boolean {
-    console.log(message.people.pseudo + " " + message.message);
     if (message && message.people.pseudo !== '' && message.message !== '') {
       this.messages.push(message);
       this.notification();
