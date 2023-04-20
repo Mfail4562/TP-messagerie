@@ -1,17 +1,24 @@
 <h3 class="text-start text-decoration-underline m-3">Nouveau message:</h3>
-<form class="text-start ">
+<form [formGroup]="angularForm" class="text-start">
   <div class="my-3">
-    <label class="form-label" for="pseudo">De:</label>
-    <input class="form-control" id="pseudo" type="text">
+    <label class="form-label">De:</label>
+    <input [ngClass]="{'form-control': true, 'is-invalid': invalidPseudo()}"
+           formControlName="pseudo"
+           type="text">
   </div>
   <div class="mb-3">
-    <label class="form-label" for="new-message">Message:</label>
-    <textarea class="form-control" id="new-message" rows="3"></textarea>
+    <label class="form-label">Message:</label>
+    <textarea [ngClass]="{'form-control': true, 'is-invalid': invalidMessage()}"
+              formControlName="message"
+              rows="3"></textarea>
   </div>
   <div class="container">
     <div class="row justify-content-end mb-3">
-      <input class="btn btn-outline-success col-2 me-3" type="submit" value="Valider">
-      <input class="btn btn-outline-danger col-2" type="reset" value="Annuler">
+      <button (click)="onRegister()" [disabled]="validationProblem()"
+              class="btn btn-outline-success col-2 me-3"
+              type="submit">Valider
+      </button>
+      <button class="btn btn-outline-danger col-2" type="reset">Annuler</button>
     </div>
   </div>
 </form>

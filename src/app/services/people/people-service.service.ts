@@ -4,7 +4,7 @@ import {People} from "../../class/People";
 @Injectable({
   providedIn: 'root'
 })
-export class PeopleServiceService {
+export class PeopleService {
   public peoplesEmitter: EventEmitter<People[]> = new EventEmitter<People[]>();
   private peoples: People[] = [];
 
@@ -15,7 +15,7 @@ export class PeopleServiceService {
     if (people && people.pseudo !== '') {
       if (!this.peoples.includes(people)) {
         this.peoples.push(people);
-        this.notifier();
+        this.notification();
         return true;
       } else {
         return false;
@@ -25,7 +25,7 @@ export class PeopleServiceService {
     }
   }
 
-  private notifier() {
+  private notification() {
     this.peoplesEmitter.emit(this.peoples.slice());
   }
 }
