@@ -3,6 +3,7 @@ import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {PeopleService} from "../services/people/people-service.service";
 import {MessageService} from "../services/message/message-service.service";
 import {People} from "../class/People";
+import {Message} from "../class/Message";
 
 @Component({
   selector: 'app-new-message',
@@ -20,7 +21,10 @@ export class NewMessageComponent {
 
   onRegister() {
     if (!this.validationProblem()) {
-      this.peopleService.addPeople(new People(this.angularForm.controls['pseudo'].value));
+      let newPeople: People = new People(this.angularForm.controls['pseudo'].value);
+      let newMessage: string = this.angularForm.controls['message'].value;
+      this.peopleService.addPeople(newPeople);
+      this.messageService.addMessage(new Message(newPeople, newMessage));
       this.angularForm.reset();
     }
   }
